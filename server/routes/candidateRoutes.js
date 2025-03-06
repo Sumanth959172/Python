@@ -12,4 +12,28 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.put('/:id/credentials', async (req, res) => {
+    const { loginID, password } = req.body;
+
+    console.log(`Updating candidate ${req.params.id} with`, { loginID, password });
+
+    try {
+        const candidate = await Candidate.findById(req.params.id);
+        if (!candidate) {
+            return res.status(404).json({ message: 'Candidate not found' });
+        }
+
+        candidate.loginID = loginID;
+        candidate.password = password;
+
+        await candidate.save();
+        res.json({ message: 'Credentials updated successfully' });
+    } catch (err) {
+        console.error('Failed to save credentials:', err);
+        res.status(500).json({ message: err.message });
+    }
+});
+
+
+
 module.exports = router;

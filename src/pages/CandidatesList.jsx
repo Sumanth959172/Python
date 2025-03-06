@@ -1,26 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';  // Import this for navigation
-import axios from 'axios';
-import '../styles.css';
+import EmailForm from './EmailForm';
 
 function CandidatesList() {
     const [candidates, setCandidates] = useState([]);
-    const navigate = useNavigate();  // Hook to navigate
+    const [selectedCandidate, setSelectedCandidate] = useState(null);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/candidates')
-            .then(response => setCandidates(response.data))
-            .catch(error => console.error('Failed to fetch candidates:', error));
+        fetch('http://localhost:5000/api/candidates')
+            .then(res => res.json())
+            .then(data => setCandidates(data))
+            .catch(err => console.error('Error fetching candidates:', err));
     }, []);
-
-    const handleBack = () => {
-        navigate('/login');  // You can change this to any other page if needed
-    };
 
     return (
         <div className="page-container">
-            <div className="candidates-card">
-                <h2 className="candidates-title">Candidates List</h2>
+            <div className="about-container">
+                <h2>Candidates List</h2>
                 <table className="candidates-table">
                     <thead>
                         <tr>
@@ -29,20 +24,30 @@ function CandidatesList() {
                         </tr>
                     </thead>
                     <tbody>
-                        {candidates.map(candidate => (
-                            <tr key={candidate._id}>
-                                <td>{candidate.name}</td>
-                                <td>{candidate.email}</td>
-                            </tr>
-                        ))}
+                        {candidates.length === 0 ? (
+                            <tr><td colSpan="2">No candidates found.</td></tr>
+                        ) : (
+                            candidates.map(candidate => (
+                                <tr 
+                                    key={candidate._id} 
+                                    onClick={() => setSelectedCandidate(candidate)}
+                                    className="clickable-row"
+                                >
+                                    <td>{candidate.name}</td>
+                                    <td>{candidate.email}</td>
+                                </tr>
+                            ))
+                        )}
                     </tbody>
                 </table>
-
-                {/* Back Button */}
-                <div className="back-button-container">
-                    <button className="back-button" onClick={handleBack}>Back</button>
-                </div>
             </div>
+
+            {selectedCandidate && (
+                <EmailForm 
+                    candidate={selectedCandidate} 
+                    onClose={() => setSelectedCandidate(null)} 
+                />
+            )}
         </div>
     );
 }

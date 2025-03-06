@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const candidateRoutes = require('./routes/candidateRoutes');
 
 const app = express();
 app.use(cors());
@@ -15,6 +16,7 @@ mongoose.connect(process.env.MONGO_URI, {
     .catch(err => console.error('❌ MongoDB connection error:', err));
 
 app.use('/api/hr', require('./routes/hrRoutes'));
+app.use('/api/candidates', candidateRoutes);
 app.use('/api/candidates', require('./routes/candidateRoutes'));
 
 const PORT = 5000;

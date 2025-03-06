@@ -7,7 +7,9 @@ import Login from './pages/Login';
 import HRLogin from './pages/HRLogin';
 import HRDashboard from './pages/HRDashboard';
 import CandidatesList from './pages/CandidatesList';
-import SendEmailPage from './pages/EmailForm';  // New Page for Sending Email
+import SendEmailPage from './pages/EmailForm';
+import CandidateLogin from './pages/CandidateLogin';
+import CandidateDashboard from './pages/CandidateDashboard';  // New import
 import './styles.css';
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
                     <Route path="/about-us" element={<AboutUs />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/login/hr" element={<HRLogin />} />
+                    <Route path="/login/candidate" element={<CandidateLogin />} />
+                    <Route path="/candidate/dashboard" element={<CandidateDashboard />} />
                     <Route path="/dashboard" element={<HRDashboard />} />
                     <Route path="/candidates" element={<CandidatesList />} />
                     <Route path="/send-email/:candidateId" element={<SendEmailPage />} />

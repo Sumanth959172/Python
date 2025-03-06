@@ -6,7 +6,11 @@ function Login() {
     const navigate = useNavigate();
 
     const goToHRLogin = () => {
-        navigate('/login/hr');  // This triggers navigation
+        navigate('/login/hr');  // Existing working part
+    };
+
+    const goToCandidateLogin = () => {  // ✅ New handler
+        navigate('/login/candidate');
     };
 
     return (
@@ -25,7 +29,7 @@ function Login() {
                         <div className="role-buttons">
                             <button onClick={goToHRLogin}>HR Login</button>
                             <button>Hiring Manager Login</button>
-                            <button>Candidate Login</button>
+                            <button onClick={goToCandidateLogin}>Candidate Login</button>  {/* 🔥 New navigation added */}
                         </div>
                     </>
                 )}

@@ -1,17 +1,25 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function TestInstructions() {
     const location = useLocation();
+    const navigate = useNavigate();
     const candidate = location.state?.candidate;
+
+    const [testStarted, setTestStarted] = useState(false);
 
     if (!candidate) {
         return <p>Unauthorized access. Please log in.</p>;
     }
 
     const startTest = () => {
-        // Directly open your Google Form in a new tab
+        // Open Google Form in new tab
         window.open('https://docs.google.com/forms/d/e/1FAIpQLSdDCl1ljKaGlPJO3IDyC7OcPPFjqMwVdxEcbJ8lhe4J3kgkhA/viewform?usp=sharing', '_blank');
+        setTestStarted(true);
+    };
+
+    const goToFeedback = () => {
+        navigate('/candidate/feedback', { state: { candidate } });
     };
 
     return (
@@ -28,7 +36,11 @@ function TestInstructions() {
                     <li>Once submitted, you cannot modify your answers.</li>
                 </ul>
 
-                <button onClick={startTest} style={startButtonStyle}>Start Test</button>
+                {!testStarted ? (
+                    <button onClick={startTest} style={startButtonStyle}>Start Test</button>
+                ) : (
+                    <button onClick={goToFeedback} style={feedbackButtonStyle}>Proceed to Feedback</button>
+                )}
             </div>
         </div>
     );
@@ -49,6 +61,16 @@ const startButtonStyle = {
     padding: '10px 20px',
     fontSize: '1rem',
     background: 'linear-gradient(to right, #ff512f, #dd2476)',
+    color: 'white',
+    border: 'none',
+    borderRadius: '5px',
+    cursor: 'pointer',
+};
+
+const feedbackButtonStyle = {
+    padding: '10px 20px',
+    fontSize: '1rem',
+    background: 'linear-gradient(to right, #24C6DC, #514A9D)',
     color: 'white',
     border: 'none',
     borderRadius: '5px',

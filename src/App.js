@@ -13,6 +13,8 @@ import CandidateDashboard from './pages/CandidateDashboard';  // New import
 import './styles.css';
 import Home from './pages/Home';
 import TestInstructions from './pages/TestInstructions';  // New import
+import FeedbackForm from './pages/FeedbackForm';
+import ThankYou from './pages/ThankYou';
 
 function App() {
     return (
@@ -29,7 +31,9 @@ function App() {
                     <Route path="/dashboard" element={<HRDashboard />} />
                     <Route path="/candidates" element={<CandidatesList />} />
                     <Route path="/send-email/:candidateId" element={<SendEmailPage />} />
-                    <Route path="/candidate/instructions" element={<TestInstructions />} />
+                    <Route path="/candidate/instructions" element={<TestInstructions />} />#
+                    <Route path="/candidate/feedback" element={<FeedbackForm />} />
+                    <Route path="/candidate/thank-you" element={<ThankYou />} />
                 </Routes>
             </div>
             <Footer />

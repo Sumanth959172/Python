@@ -11,6 +11,8 @@ import SendEmailPage from './pages/EmailForm';
 import CandidateLogin from './pages/CandidateLogin';
 import CandidateDashboard from './pages/CandidateDashboard';  // New import
 import './styles.css';
+import Home from './pages/Home';
+import TestInstructions from './pages/TestInstructions';  // New import
 
 function App() {
     return (
@@ -18,7 +20,7 @@ function App() {
             <Header />
             <div className="content-wrapper">
                 <Routes>
-                    <Route path="/" element={<AboutUs />} />
+                    <Route path="/" element={<Home />} />
                     <Route path="/about-us" element={<AboutUs />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/login/hr" element={<HRLogin />} />
@@ -27,6 +29,7 @@ function App() {
                     <Route path="/dashboard" element={<HRDashboard />} />
                     <Route path="/candidates" element={<CandidatesList />} />
                     <Route path="/send-email/:candidateId" element={<SendEmailPage />} />
+                    <Route path="/candidate/instructions" element={<TestInstructions />} />
                 </Routes>
             </div>
             <Footer />

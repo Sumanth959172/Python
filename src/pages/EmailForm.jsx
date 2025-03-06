@@ -19,7 +19,7 @@ function generateLoginID(candidate) {
 function EmailForm({ candidate, onClose }) {
     const [loginID, setLoginID] = useState('');
     const [password, setPassword] = useState('');
-    const [message, setMessage] = useState('Send Invitation Link');  // Default message for textarea
+    const [message, setMessage] = useState('Send Invitation Link');
 
     useEffect(() => {
         const generatedLoginID = generateLoginID(candidate);
@@ -38,12 +38,16 @@ function EmailForm({ candidate, onClose }) {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ loginID, password })
+                body: JSON.stringify({
+                    loginID,
+                    password,
+                    testLinkSent: true,                      // ✅ New field
+                })
             });
-    
+
             const responseText = await response.text();
             console.log('Response from backend:', responseText);
-    
+
             if (!response.ok) {
                 console.error('Failed to save credentials:', responseText);
             }
@@ -51,7 +55,6 @@ function EmailForm({ candidate, onClose }) {
             console.error('Error saving credentials:', error);
         }
     };
-    
 
     const sendEmail = (e) => {
         e.preventDefault();
@@ -61,14 +64,14 @@ function EmailForm({ candidate, onClose }) {
             to_name: candidate.name,
             login_id: loginID,
             password: password,
-            message: message  // This will be "Send Invitation Link" unless HR changes it
+            message: message
         };
 
         emailjs.send(
-            'service_zcyjes9',    // Replace with your actual Service ID
-            'template_0ts3tw9',    // Replace with your actual Template ID
+            'service_zcyjes9',
+            'template_0ts3tw9',
             templateParams,
-            'MCsX6tYQoBgXBBVi-'      // Replace with your actual Public Key
+            'MCsX6tYQoBgXBBVi-'
         )
         .then(() => {
             alert(`Email sent to ${candidate.name} (${candidate.email})`);

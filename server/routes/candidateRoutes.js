@@ -12,10 +12,11 @@ router.get('/', async (req, res) => {
     }
 });
 
+// Save credentials + testLinkSent + linkSentDate
 router.put('/:id/credentials', async (req, res) => {
-    const { loginID, password } = req.body;
+    const { loginID, password, testLinkSent } = req.body;
 
-    console.log(`Updating candidate ${req.params.id} with`, { loginID, password });
+    console.log('Updating candidate:', req.params.id, { loginID, password, testLinkSent });
 
     try {
         const candidate = await Candidate.findById(req.params.id);
@@ -25,19 +26,20 @@ router.put('/:id/credentials', async (req, res) => {
 
         candidate.loginID = loginID;
         candidate.password = password;
-
+        candidate.testLinkSent = testLinkSent;         // ✅ store this flag
         await candidate.save();
-        res.json({ message: 'Credentials updated successfully' });
+        res.json({ message: 'Credentials updated successfully', candidate });
     } catch (err) {
         console.error('Failed to save credentials:', err);
         res.status(500).json({ message: err.message });
     }
 });
 
+// Candidate login (used in candidate portal)
 router.post('/login', async (req, res) => {
     const { loginID, password } = req.body;
 
-    console.log('Login attempt:', { loginID, password });
+    console.log('Candidate login attempt:', { loginID, password });
 
     try {
         const candidate = await Candidate.findOne({ loginID, password });
@@ -49,6 +51,17 @@ router.post('/login', async (req, res) => {
     } catch (err) {
         console.error('Candidate login failed:', err);
         res.status(500).json({ message: 'Server error' });
+    }
+});
+
+// Fetch candidates for whom test link was sent
+router.get('/test-link-sent', async (req, res) => {
+    try {
+        const candidates = await Candidate.find({ testLinkSent: true });
+        res.json(candidates);
+    } catch (err) {
+        console.error('Failed to fetch candidates:', err);
+        res.status(500).json({ message: 'Failed to fetch candidates' });
     }
 });
 

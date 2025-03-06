@@ -15,6 +15,9 @@ import Home from './pages/Home';
 import TestInstructions from './pages/TestInstructions';  // New import
 import FeedbackForm from './pages/FeedbackForm';
 import ThankYou from './pages/ThankYou';
+import HiringManagerLogin from './pages/HiringManagerLogin';
+import HiringManagerDashboard from './pages/HiringManagerDashboard';
+
 
 function App() {
     return (
@@ -34,6 +37,8 @@ function App() {
                     <Route path="/candidate/instructions" element={<TestInstructions />} />#
                     <Route path="/candidate/feedback" element={<FeedbackForm />} />
                     <Route path="/candidate/thank-you" element={<ThankYou />} />
+                    <Route path="/login/hiring-manager" element={<HiringManagerLogin />} />
+                    <Route path="/hiring-manager/dashboard" element={<HiringManagerDashboard />} />
                 </Routes>
             </div>
             <Footer />

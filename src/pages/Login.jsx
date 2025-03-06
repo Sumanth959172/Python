@@ -9,8 +9,12 @@ function Login() {
         navigate('/login/hr');  // Existing working part
     };
 
-    const goToCandidateLogin = () => {  // ✅ New handler
-        navigate('/login/candidate');
+    const goToCandidateLogin = () => {
+        navigate('/login/candidate');  // Existing Candidate Navigation
+    };
+
+    const goToHiringManagerLogin = () => {   // ✅ New handler added
+        navigate('/login/hiring-manager');
     };
 
     return (
@@ -28,8 +32,8 @@ function Login() {
                         <p>Select your login type:</p>
                         <div className="role-buttons">
                             <button onClick={goToHRLogin}>HR Login</button>
-                            <button>Hiring Manager Login</button>
-                            <button onClick={goToCandidateLogin}>Candidate Login</button>  {/* 🔥 New navigation added */}
+                            <button onClick={goToHiringManagerLogin}>Hiring Manager Login</button>  {/* ✅ Added */}
+                            <button onClick={goToCandidateLogin}>Candidate Login</button>
                         </div>
                     </>
                 )}

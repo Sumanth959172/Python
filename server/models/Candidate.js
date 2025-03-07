@@ -5,8 +5,9 @@ const candidateSchema = new mongoose.Schema({
     email: String,
     loginID: String,
     password: String,
-    testLinkSent: { type: Boolean, default: false },  // track if link was sent
-                                
+    testLinkSent: { type: Boolean, default: false },
+    marks: Number,                   // Existing marks field
+    decision: { type: String, enum: ['Selected', 'Rejected', 'Pending'], default: 'Pending' }  // New
 });
 
 module.exports = mongoose.model('Candidate', candidateSchema);

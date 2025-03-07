@@ -3,7 +3,7 @@ import React from 'react';
 function Footer() {
     return (
         <footer className="footer">
-            <p>© 2025 Best Design Site. All Rights Reserved.</p>
+            <p>© 2025 Hush Hush Technologies. All Rights Reserved.</p>
         </footer>
     );
 }

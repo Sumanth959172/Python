@@ -65,4 +65,45 @@ router.get('/test-link-sent', async (req, res) => {
     }
 });
 
+
+router.put('/:id/marks', async (req, res) => {
+    const { marks } = req.body;
+
+    try {
+        const candidate = await Candidate.findById(req.params.id);
+        if (!candidate) {
+            return res.status(404).json({ message: 'Candidate not found' });
+        }
+
+        candidate.marks = marks;  // ✅ Update marks
+        await candidate.save();
+
+        res.json({ message: 'Marks updated successfully' });
+    } catch (err) {
+        console.error('Failed to save marks:', err);
+        res.status(500).json({ message: 'Failed to save marks' });
+    }
+});
+
+router.put('/:id/decision', async (req, res) => {
+    const { decision } = req.body;
+
+    try {
+        const candidate = await Candidate.findById(req.params.id);
+        if (!candidate) {
+            return res.status(404).json({ message: 'Candidate not found' });
+        }
+
+        candidate.decision = decision;
+        await candidate.save();
+
+        res.json({ message: 'Decision saved successfully!' });
+    } catch (err) {
+        console.error('Failed to save decision:', err);
+        res.status(500).json({ message: 'Failed to save decision' });
+    }
+});
+
+
+
 module.exports = router;

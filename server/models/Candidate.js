@@ -5,9 +5,10 @@ const candidateSchema = new mongoose.Schema({
     email: String,
     loginID: String,
     password: String,
-    testLinkSent: { type: Boolean, default: false },
-    marks: Number,                   // Existing marks field
-    decision: { type: String, enum: ['Selected', 'Rejected', 'Pending'], default: 'Pending' }  // New
+    testLinkSent: Boolean,
+    testSubmitted: Boolean,  // ✅ New Field
+    marks: Number,
+    decision: String  // Selected, Rejected, Pending
 });
 
 module.exports = mongoose.model('Candidate', candidateSchema);

@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Save credentials + testLinkSent + linkSentDate
+// Save credentials + testLinkSent
 router.put('/:id/credentials', async (req, res) => {
     const { loginID, password, testLinkSent } = req.body;
 
@@ -104,6 +104,33 @@ router.put('/:id/decision', async (req, res) => {
     }
 });
 
+// Fetch candidate status for HR track status page
+router.get('/status', async (req, res) => {
+    try {
+        const candidates = await Candidate.find({}, 'name email testLinkSent testSubmitted marks decision');
+        res.json(candidates);
+    } catch (err) {
+        console.error('Failed to fetch candidate status:', err);
+        res.status(500).json({ message: 'Failed to fetch candidate status' });
+    }
+});
+
+router.put('/:id/submit-test', async (req, res) => {
+    try {
+        const candidate = await Candidate.findById(req.params.id);
+        if (!candidate) {
+            return res.status(404).json({ message: 'Candidate not found' });
+        }
+
+        candidate.testSubmitted = true;  // ✅ Update testSubmitted
+        await candidate.save();
+
+        res.json({ message: 'Test submission recorded successfully' });
+    } catch (err) {
+        console.error('Failed to update test submission:', err);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
 
 
 module.exports = router;

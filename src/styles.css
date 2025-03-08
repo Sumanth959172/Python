@@ -488,64 +488,178 @@ button {
 .styled-table tr:hover {
     background-color: rgba(255, 255, 255, 0.3);
 }
-.page-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 85vh;
-    background: linear-gradient(to right, #6a11cb, #2575fc);
-    color: white;
+/* Track Status Table */
+.track-status-container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 900px;
+    width: 100%;
     text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 40px auto;
 }
 
-.home-content, .about-container {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 40px;
-    border-radius: 12px;
+.track-status-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    width: 90%;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-.futuristic-heading {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 15px;
-    background: linear-gradient(to right, #ff6f61, #6a11cb);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.track-status-table th, .track-status-table td {
+    padding: 15px;
+    text-align: left;
+    color: white;
 }
 
-.futuristic-subheading {
+.track-status-table th {
+    background-color: rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+}
+
+.track-status-table tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.track-status-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Table Icon Styling */
+.status-icon {
     font-size: 1.2rem;
     font-weight: bold;
-    margin-bottom: 15px;
-    color: #ffdd57;
 }
 
-.futuristic-body {
-    font-size: 1rem;
-    line-height: 1.8;
+.status-icon.success {
+    color: #33cc33;  /* Green for success */
+}
+
+.status-icon.failure {
+    color: #ff3333;  /* Red for failure */
+}
+
+/* Track Status Heading */
+.track-status-heading {
+    font-weight: 700;
+    font-size: 2rem;
     margin-bottom: 20px;
 }
 
-.futuristic-list {
+/* Status Button */
+.status-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(to right, #ff512f, #dd2476);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.status-btn:hover {
+    background: linear-gradient(to right, #ff6a00, #ee0979);
+    transform: translateY(-3px);
+}
+/* HR Dashboard Styling */
+.dashboard-container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 40px auto;
+}
+
+.dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.dashboard-table th, .dashboard-table td {
+    padding: 15px;
     text-align: left;
-    margin: 15px 0;
-    padding-left: 20px;
+    color: white;
 }
 
-.futuristic-list li {
-    margin: 10px 0;
-    line-height: 1.6;
+.dashboard-table th {
+    background-color: rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
 }
 
-.futuristic-punchline {
+.dashboard-table tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dashboard-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Decision Styling */
+.selected {
+    color: #33cc33;
     font-weight: bold;
-    font-size: 1.1rem;
-    margin-top: 20px;
-    background: linear-gradient(to right, #ff6f61, #ffdd57);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+}
+
+.rejected {
+    color: #ff3333;
+    font-weight: bold;
+}
+/* Dropdown Styling */
+.decision-dropdown {
+    padding: 8px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    outline: none;
+    transition: background 0.3s ease;
+}
+
+.decision-dropdown:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Selected and Rejected Styling */
+.decision-dropdown option[value="Selected"] {
+    background: rgba(50, 205, 50, 0.8); /* Green */
+}
+
+.decision-dropdown option[value="Rejected"] {
+    background: rgba(255, 69, 0, 0.8); /* Red */
+}
+.confirmation-box {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(12px);
+    text-align: center;
+    max-width: 500px;
+    margin: auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.confirmation-box h2 {
+    margin-bottom: 10px;
+}
+
+.confirmation-box p {
+    margin-bottom: 20px;
 }

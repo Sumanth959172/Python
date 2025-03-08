@@ -6,10 +6,14 @@ function HRDashboard() {
 
     return (
         <div className="page-container">
-            <div className="about-container">
+            <div className="dashboard-container">
                 <h2>Welcome HR</h2>
                 <p>Manage candidates and streamline the hiring process.</p>
-                <button onClick={() => navigate('/candidates')}>View Candidates</button>
+
+                <div className="button-container">
+                    <button onClick={() => navigate('/hr/candidates')} className="role-btn">View Candidates</button>
+                    <button onClick={() => navigate('/hr/track-status')} className="role-btn">Track Status</button>  {/* ✅ New Button */}
+                </div>
             </div>
         </div>
     );

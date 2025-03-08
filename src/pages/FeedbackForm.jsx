@@ -22,7 +22,7 @@ function FeedbackForm() {
             });
 
             alert('Thank you for your feedback!');
-            navigate('/candidate/thank-you');
+            navigate('/candidate/submit-test', { state: { candidate } });  // ✅ Pass candidate state
         } catch (error) {
             console.error('Failed to submit feedback', error);
             alert('Failed to submit feedback. Please try again.');

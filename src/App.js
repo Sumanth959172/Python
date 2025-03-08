@@ -17,6 +17,9 @@ import FeedbackForm from './pages/FeedbackForm';
 import ThankYou from './pages/ThankYou';
 import HiringManagerLogin from './pages/HiringManagerLogin';
 import HiringManagerDashboard from './pages/HiringManagerDashboard';
+import TrackStatus from './pages/TrackStatus';
+import SubmitTest from './pages/SubmitTest';
+
 
 
 function App() {
@@ -32,13 +35,16 @@ function App() {
                     <Route path="/login/candidate" element={<CandidateLogin />} />
                     <Route path="/candidate/dashboard" element={<CandidateDashboard />} />
                     <Route path="/dashboard" element={<HRDashboard />} />
-                    <Route path="/candidates" element={<CandidatesList />} />
+                    <Route path="/hr/candidates" element={<CandidatesList />} />
                     <Route path="/send-email/:candidateId" element={<SendEmailPage />} />
-                    <Route path="/candidate/instructions" element={<TestInstructions />} />#
+                    <Route path="/candidate/instructions" element={<TestInstructions />} />
                     <Route path="/candidate/feedback" element={<FeedbackForm />} />
+                    <Route path="/candidate/submit-test" element={<SubmitTest />} />
                     <Route path="/candidate/thank-you" element={<ThankYou />} />
                     <Route path="/login/hiring-manager" element={<HiringManagerLogin />} />
                     <Route path="/hiring-manager/dashboard" element={<HiringManagerDashboard />} />
+                    <Route path="/hr/track-status" element={<TrackStatus />} />
+
                 </Routes>
             </div>
             <Footer />

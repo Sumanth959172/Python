@@ -19,8 +19,9 @@ import HiringManagerLogin from './pages/HiringManagerLogin';
 import HiringManagerDashboard from './pages/HiringManagerDashboard';
 import TrackStatus from './pages/TrackStatus';
 import SubmitTest from './pages/SubmitTest';
-
-
+import SendEmailOptions from './pages/SendEmailOptions';
+import SendOfferEmail from './pages/SendOfferEmail';
+import SendRejectionEmail from './pages/SendRejectionEmail';
 
 function App() {
     return (
@@ -44,7 +45,10 @@ function App() {
                     <Route path="/login/hiring-manager" element={<HiringManagerLogin />} />
                     <Route path="/hiring-manager/dashboard" element={<HiringManagerDashboard />} />
                     <Route path="/hr/track-status" element={<TrackStatus />} />
-
+                    <Route path="/hr/send-email" element={<SendEmailPage />} />
+                    <Route path="/hr/send-email-options" element={<SendEmailOptions />} />
+                    <Route path="/hr/send-offer-email" element={<SendOfferEmail />} />
+                    <Route path="/hr/send-rejection-email" element={<SendRejectionEmail />} /> 
                 </Routes>
             </div>
             <Footer />

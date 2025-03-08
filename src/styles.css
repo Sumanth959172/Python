@@ -663,3 +663,39 @@ button {
 .confirmation-box p {
     margin-bottom: 20px;
 }
+
+.email-container {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    backdrop-filter: blur(12px);
+}
+
+.dropdown {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.role-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: linear-gradient(to right, #6a11cb, #ff6f61);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.dropdown {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: black;
+    font-size: 1rem;
+}
